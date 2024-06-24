@@ -1,70 +1,26 @@
-import styles from './NavBar.module.css'
-import { NavLink } from 'react-router-dom'
+import styles from './NavBar.module.css';
+import { NavLink } from 'react-router-dom';
 
-const NavBar = () => {
+const NavBar = ({ tema, alternarTema }) => {
   return (
-    <nav className={styles.navbar}>
-
-        <NavLink to='/'>
-
-         Home
-
-        </NavLink>
-
-        <ul>
-
-    
+    <nav className={`${styles.navbar} ${tema === 'escuro' ? styles['navbar-escuro'] : ''}`}>
+      <NavLink to='/'>Home</NavLink>
+      <ul>
         <li>
-
-        <NavLink to='/cuidadores'>
-
-        Meu plano
-
-        </NavLink>
-
-
-       </li>
-
-
-        <li>
-
-    <NavLink to='/anuncio'>
-
-    Detalhes
-
-    </NavLink>
-
-
-    </li>
-
-
-        <li>
-
-        <NavLink to='/login'>
-
-        Histórico
-
-        </NavLink>
-
-
+          <NavLink to='/plano'>Meu plano</NavLink>
         </li>
-
-
-            <li>
-
-            <NavLink to='/cadastro'>
-
-            Cadastro
-
-            </NavLink>
-
-
-            </li>
-
-        </ul>
-      
+        <li>
+          <NavLink to='/detalhes'>Detalhes</NavLink>
+        </li>
+        <li>
+          <NavLink to='/historico'>Histórico</NavLink>
+        </li>
+      </ul>
+      <button onClick={alternarTema}>
+        Alternar Tema
+      </button>
     </nav>
-  )
+  );
 }
 
-export default NavBar
+export default NavBar;
